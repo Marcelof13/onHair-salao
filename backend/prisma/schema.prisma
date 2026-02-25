@@ -1,0 +1,45 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id           String        @id @default(uuid())
+  name         String
+  email        String        @unique
+  password     String
+  appointments Appointment[]
+  createdAt    DateTime      @default(now())
+}
+
+model Professional {
+  id           String        @id @default(uuid())
+  name         String
+  role         String
+  appointments Appointment[]
+}
+
+model Service {
+  id              String        @id @default(uuid())
+  name            String
+  category        String
+  price           Float
+  durationMinutes Int
+  appointments    Appointment[]
+}
+
+model Appointment {
+  id             String       @id @default(uuid())
+  date           DateTime     // The start time of the appointment
+  userId         String
+  professionalId String
+  serviceId      String
+  user           User         @relation(fields: [userId], references: [id])
+  professional   Professional @relation(fields: [professionalId], references: [id])
+  service        Service      @relation(fields: [serviceId], references: [id])
+  createdAt      DateTime     @default(now())
+}

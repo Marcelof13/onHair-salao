@@ -1,0 +1,109 @@
+<div class="dashboard-container">
+
+    <div class="booking-section animate-fade-in">
+        <h2 class="section-title">Agendar Novo <span class="text-gold">Horário</span></h2>
+
+        <div class="booking-grid">
+
+            <!-- Step 1: Services -->
+            <div class="step-card glass-panel">
+                <h3 class="step-header">1. Escolha o Serviço</h3>
+                <div class="grid-list">
+                    <div class="choice-card" *ngFor="let s of services" [class.selected]="selectedService?.id === s.id"
+                        (click)="selectService(s)">
+                        <div class="card-icon">✂️</div>
+                        <div class="card-info">
+                            <h4>{{ s.name }}</h4>
+                            <p class="service-meta">{{ s.category }} • {{ s.durationMinutes }}min</p>
+                        </div>
+                        <div class="card-price">R$ {{ s.price }}</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Professionals -->
+            <div class="step-card glass-panel">
+                <h3 class="step-header">2. Profissional</h3>
+                <div class="grid-list professionals-list">
+                    <div class="choice-card pro-card" *ngFor="let p of professionals"
+                        [class.selected]="selectedPro?.id === p.id" (click)="selectPro(p)">
+                        <div class="pro-avatar">{{ p.name.charAt(0) }}</div>
+                        <div class="card-info">
+                            <h4>{{ p.name }}</h4>
+                            <p class="service-meta">{{ p.role }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Date and Time -->
+            <div class="step-card glass-panel">
+                <h3 class="step-header">3. Data e Horário</h3>
+                <div class="datetime-wrapper">
+                    <div class="date-picker-area">
+                        <label class="input-label" for="bookingDate">Data</label>
+                        <input type="date" id="bookingDate" class="input-field date-input" [value]="selectedDate"
+                            (change)="onDateChange($event)">
+                    </div>
+
+                    <div class="time-slots-area" *ngIf="selectedDate">
+                        <label class="input-label">Horários Disponíveis</label>
+                        <div class="time-grid">
+                            <button *ngFor="let t of timeSlots" class="time-btn" [class.selected]="selectedTime === t"
+                                (click)="selectTime(t)">
+                                {{ t }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Summary and Submit -->
+        <div class="summary-section glass-panel">
+            <div class="messages">
+                <div class="success-msg" *ngIf="successMessage">✓ {{ successMessage }}</div>
+                <div class="error-msg-box" *ngIf="errorMessage">⚠ {{ errorMessage }}</div>
+            </div>
+
+            <div class="summary-actions">
+                <div class="selected-summary" *ngIf="canSubmit()">
+                    <strong>Resumo:</strong> {{ selectedService?.name }} com {{ selectedPro?.name }} em {{ selectedDate
+                    | date:'dd/MM/yyyy' }} às {{ selectedTime }}.
+                </div>
+                <button class="btn-primary submit-btn" [disabled]="!canSubmit() || isLoading"
+                    (click)="submitAppointment()">
+                    <span *ngIf="!isLoading">Confirmar Agendamento</span>
+                    <span *ngIf="isLoading" class="loader"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Appointments History -->
+    <div class="history-section animate-fade-in">
+        <h2 class="section-title text-gold">Meus Agendamentos</h2>
+
+        <div *ngIf="myAppointments.length === 0" class="empty-state">
+            Você ainda não possui agendamentos.
+        </div>
+
+        <div class="appointments-list" *ngIf="myAppointments.length > 0">
+            <div class="appt-card glass-panel" *ngFor="let appt of myAppointments">
+                <div class="appt-date-box">
+                    <span class="day">{{ appt.date | date:'dd' }}</span>
+                    <span class="month">{{ appt.date | date:'MMM' }}</span>
+                </div>
+                <div class="appt-details">
+                    <h4>{{ appt.service?.name }}</h4>
+                    <p>Com {{ appt.professional?.name }}</p>
+                </div>
+                <div class="appt-time">
+                    {{ appt.date | date:'HH:mm' }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

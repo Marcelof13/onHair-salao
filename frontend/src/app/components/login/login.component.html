@@ -1,0 +1,38 @@
+<div class="auth-container animate-fade-in">
+    <div class="glass-panel auth-card">
+        <div class="logo-area">
+            <h1 class="logo-text">Barbearia <span class="text-gold">JJ</span></h1>
+            <p class="subtitle">Bem-vindo de volta, nobre.</p>
+        </div>
+
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="auth-form">
+            <div class="input-group">
+                <label class="input-label" for="email">E-mail</label>
+                <input id="email" type="email" formControlName="email" class="input-field" placeholder="seu@email.com"
+                    autocomplete="email">
+                <div class="error-msg" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid">
+                    Insira um e-mail válido.
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label class="input-label" for="password">Senha</label>
+                <input id="password" type="password" formControlName="password" class="input-field"
+                    placeholder="••••••••">
+            </div>
+
+            <div class="error-msg server-error" *ngIf="errorMessage">
+                {{ errorMessage }}
+            </div>
+
+            <button type="submit" class="btn-primary login-btn" [disabled]="loginForm.invalid || isLoading">
+                <span *ngIf="!isLoading">Entrar</span>
+                <span *ngIf="isLoading" class="loader"></span>
+            </button>
+
+            <div class="auth-footer">
+                <p>Ainda não tem conta? <a routerLink="/register" class="text-gold hover-link">Agende-se agora</a></p>
+            </div>
+        </form>
+    </div>
+</div>

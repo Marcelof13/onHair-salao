@@ -1,0 +1,57 @@
+<div class="auth-container animate-fade-in">
+    <div class="glass-panel auth-card">
+        <div class="logo-area">
+            <h1 class="logo-text">A Nova <span class="text-gold">Era</span></h1>
+            <p class="subtitle">Registre-se e agende o seu horário.</p>
+        </div>
+
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="auth-form">
+            <div class="input-group">
+                <label class="input-label" for="name">Nome Completo</label>
+                <input id="name" type="text" formControlName="name" class="input-field" placeholder="Ex: João Silva">
+                <div class="error-msg" *ngIf="registerForm.get('name')?.touched && registerForm.get('name')?.invalid">
+                    Nome é obrigatório.
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label class="input-label" for="email">E-mail</label>
+                <input id="email" type="email" formControlName="email" class="input-field" placeholder="seu@email.com">
+                <div class="error-msg" *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid">
+                    Insira um e-mail válido.
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label class="input-label" for="password">Senha</label>
+                <input id="password" type="password" formControlName="password" class="input-field"
+                    placeholder="••••••••">
+                <div class="password-rules" *ngIf="passwordControl?.touched && passwordControl?.invalid">
+                    A senha deve ter:
+                    <ul>
+                        <li [class.valid]="passwordControl?.value?.length >= 8">Mínimo de 8 caracteres</li>
+                        <li [class.valid]="hasUpperCase">Pelo menos uma letra maiúscula</li>
+                        <li [class.valid]="hasLowerCase">Pelo menos uma letra minúscula</li>
+                        <li [class.valid]="hasNumber">Pelo menos um número</li>
+                        <li [class.valid]="hasSpecial">Um caractere especial
+                            (&#64;$!%*?&)
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="error-msg server-error" *ngIf="errorMessage">
+                {{ errorMessage }}
+            </div>
+
+            <button type="submit" class="btn-primary register-btn" [disabled]="registerForm.invalid || isLoading">
+                <span *ngIf="!isLoading">Criar Conta</span>
+                <span *ngIf="isLoading" class="loader"></span>
+            </button>
+
+            <div class="auth-footer">
+                <p>Já possui uma conta? <a routerLink="/login" class="text-gold hover-link">Faça login</a></p>
+            </div>
+        </form>
+    </div>
+</div>

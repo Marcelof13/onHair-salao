@@ -1,0 +1,14 @@
+<nav class="navbar glass-panel">
+    <div class="nav-container">
+        <div class="brand">
+            <span class="logo-txt">Barbearia <span class="text-gold">JJ</span></span>
+        </div>
+
+        <div class="nav-actions" *ngIf="user$ | async as user">
+            <div class="user-greeting">
+                <span class="greeting-text">Olá, <strong class="text-gold">{{ $any(user).name }}</strong></span>
+            </div>
+            <button class="btn-outline logout-btn" (click)="logout()">Sair</button>
+        </div>
+    </div>
+</nav>
