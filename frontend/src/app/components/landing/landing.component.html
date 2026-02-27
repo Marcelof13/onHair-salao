@@ -1,0 +1,215 @@
+<div class="landing-page">
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <img src="assets/images/logo.png" alt="OnHair Studio Logo" class="brand-logo" />
+            </div>
+
+            <nav class="nav-menu">
+                <a href="#home">Home</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#servicos">Serviços</a>
+                <a href="#depoimentos">Depoimentos</a>
+            </nav>
+
+            <div class="header-actions">
+                <button class="btn-primary btn-sm" (click)="goToLogin()">Agendar</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero" (mousemove)="onMouseMove($event)" [style.--mouse-x]="mouseX + 'px'"
+        [style.--mouse-y]="mouseY + 'px'" [style.--mouse-x-ratio]="mouseXRatio" [style.--mouse-y-ratio]="mouseYRatio">
+        <div class="hero-glow"></div>
+        <div class="hero-particles"></div>
+        <div class="hero-particles-2"></div>
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1 class="animate-fade-in">Onde a beleza encontra a técnica.</h1>
+            <p class="hero-subtitle animate-fade-in">Transforme seu visual com os melhores profissionais e técnicas
+                exclusivas no OnHair Studio.</p>
+
+            <div class="hero-cta animate-fade-in">
+                <button class="btn-primary btn-lg" (click)="goToLogin()">
+                    Agende Seu Horário
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Section -->
+    <section id="sobre" class="section sobre-section">
+        <div class="container">
+            <div class="sobre-grid">
+                <div class="sobre-text">
+                    <h2 class="section-title">Nossa <span class="text-gold">História</span></h2>
+                    <p>No OnHair Studio, acreditamos que cada cliente é único. Com anos de experiência no mercado de
+                        beleza, nosso foco é proporcionar mais do que um serviço, mas uma verdadeira experiência de
+                        transformação e autocuidado.</p>
+                    <p>Nossa equipe de especialistas está em constante atualização para oferecer as tendências mais
+                        recentes em cortes, colorações e tratamentos, sempre com produtos de altíssima qualidade.</p>
+                    <div class="stats-row">
+                        <div class="stat-item">
+                            <span class="stat-number">+10</span>
+                            <span class="stat-label">Anos de Experiência</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">+5k</span>
+                            <span class="stat-label">Clientes Satisfeitos</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="sobre-image-wrapper">
+                    <div class="glass-panel image-placeholder">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none"
+                            stroke="var(--accent-gold)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                            <polyline points="21 15 16 10 5 21"></polyline>
+                        </svg>
+                        <p>Imagem da Equipe/Salão</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços Section -->
+    <section id="servicos" class="section servicos-section bg-secondary">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Nossos <span class="text-gold">Serviços</span></h2>
+                <p class="section-subtitle">Tratamentos exclusivos e personalizados para realçar a sua beleza natural.
+                </p>
+            </div>
+
+            <div class="services-grid">
+                <!-- Serviço 1 -->
+                <div class="service-card glass-panel">
+                    <div class="service-icon">✂️</div>
+                    <h3>Corte & Estilo</h3>
+                    <p>Visagismo e cortes modernos adaptados ao seu formato de rosto e estilo de vida.</p>
+                </div>
+
+                <!-- Serviço 2 -->
+                <div class="service-card glass-panel">
+                    <div class="service-icon">🎨</div>
+                    <h3>Coloração & Mechas</h3>
+                    <p>Técnicas avançadas de iluminação, balayage e colorimetria com produtos premium.</p>
+                </div>
+
+                <!-- Serviço 3 -->
+                <div class="service-card glass-panel">
+                    <div class="service-icon">✨</div>
+                    <h3>Tratamentos</h3>
+                    <p>Cronograma capilar, reconstrução, hidratação profunda e terapias do couro cabeludo.</p>
+                </div>
+
+                <!-- Serviço 4 -->
+                <div class="service-card glass-panel">
+                    <div class="service-icon">💅</div>
+                    <h3>Manicure & Pedicure</h3>
+                    <p>Cuidados completos para unhas, incluindo spa dos pés e mãos, e alongamentos.</p>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <button class="btn-primary" (click)="goToLogin()">Ver Todos os Serviços</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof (Depoimentos) -->
+    <section id="depoimentos" class="section depoimentos-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">O que dizem <span class="text-gold">Nossos Clientes</span></h2>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card glass-panel">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Experiência incrível! O atendimento é impecável e o resultado do meu
+                        cabelo superou todas as expectativas. Recomendo de olhos fechados!"</p>
+                    <div class="testimonial-author">- Simone D.</div>
+                </div>
+
+                <div class="testimonial-card glass-panel">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Profissionais extremamente capacitados. Fizeram exatamente a cor que eu
+                        queria, preservando a saúde dos fios. Ambiente acolhedor e luxuoso."</p>
+                    <div class="testimonial-author">- Bárbara L.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- CTA Final / Agendamento -->
+    <section id="agendar" class="section cta-final bg-gold-gradient">
+        <div class="container text-center">
+            <h2>Pronta para a sua transformação?</h2>
+            <p>Agende agora e garanta um momento exclusivo de cuidado e beleza.</p>
+            <button class="btn-dark btn-lg">
+                Falar no WhatsApp
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <svg width="80" height="80" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"
+                            class="brand-logo-footer">
+                            <!-- Borda Quadrada -->
+                            <rect x="5" y="5" width="90" height="90" fill="none" stroke="var(--accent-gold)"
+                                stroke-width="2" />
+                            <!-- Cabelo Dourado Estilizado -->
+                            <path d="M 30,30 Q 50,10 70,50 T 80,90 Q 60,70 50,55 T 30,30" fill="none"
+                                stroke="var(--accent-gold)" stroke-width="4" />
+                            <path d="M 35,40 Q 50,20 65,55 T 70,85 Q 55,65 45,55 T 35,40" fill="none"
+                                stroke="var(--accent-gold)" stroke-width="3" />
+                            <path d="M 40,50 Q 50,30 60,60 T 60,80 Q 50,60 40,50" fill="none"
+                                stroke="var(--accent-gold)" stroke-width="2" />
+                            <!-- Lábios Vermelhos -->
+                            <path d="M 45,75 Q 50,70 55,75 Q 50,80 45,75" fill="#ef4444" />
+                        </svg>
+                    </div>
+                    <p class="footer-desc">Onde a beleza encontra a técnica. Seu espaço de luxo e cuidado.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Links Rápidos</h3>
+                    <a href="#home">Home</a>
+                    <a href="#sobre">Sobre Nós</a>
+                    <a href="#servicos">Serviços</a>
+                </div>
+
+                <div class="footer-contact">
+                    <h3>Contato</h3>
+                    <p>📍 R. Exemplo de Endereço, 123 - Centro</p>
+                    <p>📱 (11) 99999-9999</p>
+                    <p>✉️ contato&#64;onhair.com.br</p>
+                </div>
+
+                <div class="footer-hours">
+                    <h3>Horário de Funcionamento</h3>
+                    <p>Terça a Sexta: 09h às 19h</p>
+                    <p>Sábado: 08h às 18h</p>
+                    <p>Domingo e Segunda: Fechado</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 OnHair Studio. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</div>
