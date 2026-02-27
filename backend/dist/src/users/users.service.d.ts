@@ -4,22 +4,22 @@ export declare class UsersService {
     constructor(prisma: PrismaService);
     findByEmail(email: string): Promise<{
         id: string;
-        name: string;
         email: string;
+        name: string;
         password: string;
         createdAt: Date;
     } | null>;
     findById(id: string): Promise<{
         id: string;
-        name: string;
         email: string;
+        name: string;
         password: string;
         createdAt: Date;
     } | null>;
     create(data: any): Promise<{
         id: string;
-        name: string;
         email: string;
+        name: string;
         password: string;
         createdAt: Date;
     }>;
