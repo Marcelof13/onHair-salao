@@ -24,3 +24,9 @@ Thumbs.db
 
 # Angular
 .angular/
+
+# Logs
+*.log
+
+# Coverage
+coverage/
