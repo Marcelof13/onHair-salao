@@ -5,6 +5,7 @@ node_modules
 /generated/prisma
 
 dist/
+prisma/dev.db
 
 # TypeScript build info
 *.tsbuildinfo
