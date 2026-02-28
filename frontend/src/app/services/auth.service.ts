@@ -26,7 +26,7 @@ export class AuthService {
         if (isExpired) {
           this.logout();
         } else {
-          this.currentUserSubject.next({ name: decoded.name, email: decoded.email, id: decoded.sub });
+          this.currentUserSubject.next({ name: decoded.name, email: decoded.email, id: decoded.sub, role: decoded.role });
         }
       } catch {
         this.logout();
@@ -50,9 +50,16 @@ export class AuthService {
   }
 
   logout() {
+    const userRole = this.currentUserSubject.value?.role;
+
     localStorage.removeItem('token');
     this.currentUserSubject.next(null);
-    this.router.navigate(['/login']);
+
+    if (userRole === 'ADMIN') {
+      this.router.navigate(['/admin-login']);
+    } else {
+      this.router.navigate(['/login']);
+    }
   }
 
   getToken(): string | null {
