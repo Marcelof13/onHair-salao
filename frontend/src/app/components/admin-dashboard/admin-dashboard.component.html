@@ -1,0 +1,367 @@
+<div class="admin-layout" [class.collapsed]="!isSidebarExpanded">
+    <aside class="admin-sidebar glass-panel">
+        <div class="sidebar-header">
+            <h2 class="sidebar-title" *ngIf="isSidebarExpanded">On Hair Admin</h2>
+            <button class="toggle-btn" (click)="toggleSidebar()">
+                <svg *ngIf="isSidebarExpanded" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <polygon points="15,4 5,12 15,20"></polygon>
+                </svg>
+                <svg *ngIf="!isSidebarExpanded" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <polygon points="9,4 19,12 9,20"></polygon>
+                </svg>
+            </button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <!-- Agenda -->
+            <div class="nav-item-wrapper">
+                <a class="nav-item" (click)="toggleMenu('agenda', $event)" [class.active]="expandedMenu === 'agenda'">
+                    <svg class="nav-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="5" y="5" width="14" height="14" rx="2" ry="2"></rect>
+                        <circle cx="8" cy="8" r="1" fill="currentColor"></circle>
+                        <circle cx="12" cy="8" r="1" fill="currentColor"></circle>
+                        <circle cx="16" cy="8" r="1" fill="currentColor"></circle>
+                        <circle cx="8" cy="12" r="1" fill="currentColor"></circle>
+                        <circle cx="12" cy="12" r="1" fill="currentColor"></circle>
+                        <circle cx="16" cy="12" r="1" fill="currentColor"></circle>
+                        <circle cx="8" cy="16" r="1" fill="currentColor"></circle>
+                        <circle cx="12" cy="16" r="1" fill="currentColor"></circle>
+                        <circle cx="16" cy="16" r="1" fill="currentColor"></circle>
+                    </svg>
+                    <span class="nav-text" *ngIf="isSidebarExpanded">Agenda</span>
+                    <svg class="chevron" *ngIf="isSidebarExpanded" [class.rotated]="expandedMenu === 'agenda'"
+                        width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </a>
+
+                <div class="submenu" [class.open]="expandedMenu === 'agenda' && isSidebarExpanded">
+                    <a class="submenu-item">
+                        <span class="nav-text">Minha Agenda</span>
+                        <svg class="submenu-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                    <a class="submenu-item">
+                        <span class="nav-text">Agenda por Cliente</span>
+                        <svg class="submenu-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                    <a class="submenu-item">
+                        <span class="nav-text">Consultar Agendamentos</span>
+                        <svg class="submenu-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                    <a class="submenu-item">
+                        <span class="nav-text">Liberações de Horários</span>
+                        <svg class="submenu-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                    <a class="submenu-item">
+                        <span class="nav-text">Feriados e Horários Especiais</span>
+                        <svg class="submenu-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                    <a class="submenu-item">
+                        <span class="nav-text">PAT - Terminal Profissional</span>
+                        <svg class="submenu-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Estabelecimento -->
+            <div class="nav-item-wrapper">
+                <a class="nav-item" (click)="toggleMenu('estabelecimento', $event)"
+                    [class.active]="expandedMenu === 'estabelecimento'">
+                    <svg class="nav-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 7h16v2H4z"></path>
+                        <path d="M5 9v11a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9"></path>
+                        <path d="M9 13h6"></path>
+                        <path d="M12 11v6"></path>
+                    </svg>
+                    <span class="nav-text" *ngIf="isSidebarExpanded">Estabelecimento</span>
+                    <svg class="chevron" *ngIf="isSidebarExpanded" [class.rotated]="expandedMenu === 'estabelecimento'"
+                        width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </a>
+
+                <div class="submenu" [class.open]="expandedMenu === 'estabelecimento' && isSidebarExpanded">
+                    <a class="submenu-item">
+                        <span class="nav-text">Clientes</span>
+                        <svg class="submenu-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                    <a class="submenu-item">
+                        <span class="nav-text">Profissionais</span>
+                        <svg class="submenu-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                    <a class="submenu-item">
+                        <span class="nav-text">Produtos</span>
+                        <svg class="submenu-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                    <a class="submenu-item">
+                        <span class="nav-text">Serviços</span>
+                        <svg class="submenu-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                    <a class="submenu-item">
+                        <span class="nav-text">Pacotes</span>
+                        <svg class="submenu-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Financeiro -->
+            <div class="nav-item-wrapper">
+                <a class="nav-item" (click)="toggleMenu('financeiro', $event)"
+                    [class.active]="expandedMenu === 'financeiro'">
+                    <svg class="nav-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="9"></circle>
+                        <path d="M12 8v8"></path>
+                        <path d="M9.5 10a2.5 2.5 0 0 1 5 0c0 1.5-5 1.5-5 3a2.5 2.5 0 0 0 5 0"></path>
+                    </svg>
+                    <span class="nav-text" *ngIf="isSidebarExpanded">Financeiro</span>
+                    <svg class="chevron" *ngIf="isSidebarExpanded" [class.rotated]="expandedMenu === 'financeiro'"
+                        width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </a>
+
+                <div class="submenu" [class.open]="expandedMenu === 'financeiro' && isSidebarExpanded">
+                    <a class="submenu-item">
+                        <span class="nav-text">Caixa</span>
+                        <svg class="submenu-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                    <a class="submenu-item">
+                        <span class="nav-text">Controle de Caixa</span>
+                        <svg class="submenu-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                    <a class="submenu-item">
+                        <span class="nav-text">Fluxo por Pagamento</span>
+                        <svg class="submenu-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                    <a class="submenu-item">
+                        <span class="nav-text">Fechamento Mensal</span>
+                        <svg class="submenu-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                    <a class="submenu-item">
+                        <span class="nav-text">Despesas/Contas a Pagar</span>
+                        <svg class="submenu-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                    <a class="submenu-item">
+                        <span class="nav-text">Tipos de Despesas</span>
+                        <svg class="submenu-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                    <a class="submenu-item">
+                        <span class="nav-text">Clientes em Débito</span>
+                        <svg class="submenu-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                    <a class="submenu-item">
+                        <span class="nav-text">Crédito de Cliente</span>
+                        <svg class="submenu-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                    <a class="submenu-item">
+                        <span class="nav-text">Gorjetas</span>
+                        <svg class="submenu-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Relatórios -->
+            <div class="nav-item-wrapper">
+                <a class="nav-item" (click)="toggleMenu('relatorios', $event)"
+                    [class.active]="expandedMenu === 'relatorios'">
+                    <svg class="nav-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                        <path d="M8 21h8"></path>
+                        <path d="M12 17v4"></path>
+                        <polyline points="6 12 10 8 14 11 18 6"></polyline>
+                        <polyline points="18 6 18 10"></polyline>
+                        <polyline points="14 6 18 6"></polyline>
+                    </svg>
+                    <span class="nav-text" *ngIf="isSidebarExpanded">Relatórios</span>
+                    <svg class="chevron" *ngIf="isSidebarExpanded" [class.rotated]="expandedMenu === 'relatorios'"
+                        width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </a>
+
+                <div class="submenu" [class.open]="expandedMenu === 'relatorios' && isSidebarExpanded">
+                    <a class="submenu-item">
+                        <span class="nav-text">Relatórios Principais</span>
+                        <svg class="submenu-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                    <a class="submenu-item">
+                        <span class="nav-text">Demonstrativo de Resultado</span>
+                        <svg class="submenu-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                    <a class="submenu-item">
+                        <span class="nav-text">Rankings</span>
+                        <svg class="submenu-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                    <a class="submenu-item">
+                        <span class="nav-text">Pesquisa de Satisfação</span>
+                        <svg class="submenu-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                    <a class="submenu-item">
+                        <span class="nav-text">Programa de Fidelidade</span>
+                        <svg class="submenu-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                    <a class="submenu-item">
+                        <span class="nav-text">Mapa de Calor</span>
+                        <svg class="submenu-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                    <a class="submenu-item">
+                        <span class="nav-text">Retorno de Clientes</span>
+                        <svg class="submenu-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Configurações -->
+            <div class="nav-item-wrapper">
+                <a class="nav-item" (click)="toggleMenu('configuracoes', $event)"
+                    [class.active]="expandedMenu === 'configuracoes'">
+                    <svg class="nav-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path
+                            d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                        </path>
+                    </svg>
+                    <span class="nav-text" *ngIf="isSidebarExpanded">Configurações</span>
+                    <svg class="chevron" *ngIf="isSidebarExpanded" [class.rotated]="expandedMenu === 'configuracoes'"
+                        width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </a>
+
+                <div class="submenu" [class.open]="expandedMenu === 'configuracoes' && isSidebarExpanded">
+                    <a class="submenu-item">
+                        <span class="nav-text">Todas as Configurações</span>
+                        <svg class="submenu-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                    <a class="submenu-item">
+                        <span class="nav-text">Configurações do Sistema</span>
+                        <svg class="submenu-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                    <a class="submenu-item">
+                        <span class="nav-text">Configurações Adicionais</span>
+                        <svg class="submenu-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="sidebar-footer" *ngIf="isSidebarExpanded">
+            <a class="logout-btn" (click)="logout()">Sair</a>
+        </div>
+    </aside>
+
+    <main class="admin-main">
+        <header class="top-nav glass-panel">
+            <div class="header-left">
+                <h2>Painel de Administração</h2>
+            </div>
+        </header>
+        <div class="content-area animate-fade-in">
+            <div class="glass-panel welcome-card">
+                <h3>Bem-vindo ao Painel de Administração</h3>
+                <p>Selecione uma opção no menu lateral para começar.</p>
+            </div>
+            <!-- Future content here -->
+        </div>
+    </main>
+</div>

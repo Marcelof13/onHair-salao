@@ -1,15 +1,15 @@
 <div class="auth-container animate-fade-in">
     <div class="glass-panel auth-card">
         <div class="logo-area">
-            <h1 class="logo-text"><span class="text-gold">On Hair Studio</span></h1>
-            <p class="subtitle">Acesse sua conta</p>
+            <h1 class="logo-text"><span class="text-gold">Admin On Hair</span></h1>
+            <p class="subtitle">Acesso restrito a administradores.</p>
         </div>
 
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="auth-form">
             <div class="input-group">
-                <label class="input-label" for="email">E-mail</label>
-                <input id="email" type="email" formControlName="email" class="input-field" placeholder="seu@email.com"
-                    autocomplete="email">
+                <label class="input-label" for="email">E-mail Corporativo</label>
+                <input id="email" type="email" formControlName="email" class="input-field"
+                    placeholder="admin@onhair.com.br" autocomplete="email">
                 <div class="error-msg" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid">
                     Insira um e-mail válido.
                 </div>
@@ -26,12 +26,11 @@
             </div>
 
             <button type="submit" class="btn-primary login-btn" [disabled]="loginForm.invalid || isLoading">
-                <span *ngIf="!isLoading">Entrar</span>
+                <span *ngIf="!isLoading">Acessar Painel</span>
                 <span *ngIf="isLoading" class="loader"></span>
             </button>
-
             <div class="auth-footer">
-                <p>Ainda não tem conta? <a routerLink="/register" class="text-gold hover-link">Cadastre-se agora</a></p>
+                <p><a routerLink="/login" class="text-gold hover-link">Voltar para login de cliente</a></p>
             </div>
         </form>
     </div>

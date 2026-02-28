@@ -1,0 +1,87 @@
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: radial-gradient(circle at top right, #1f1a11 0%, transparent 40%),
+        radial-gradient(circle at bottom left, #141414 0%, transparent 40%);
+    padding: 1rem;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 420px;
+    padding: 3rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.logo-area {
+    text-align: center;
+}
+
+.logo-text {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-btn {
+    margin-top: 1rem;
+}
+
+.auth-footer {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.hover-link {
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.hover-link:hover {
+    filter: brightness(1.2);
+    text-decoration: underline;
+}
+
+.error-msg {
+    color: var(--error-color);
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+}
+
+.server-error {
+    text-align: center;
+    margin: -0.5rem 0 1rem 0;
+    font-size: 0.9rem;
+}
+
+.loader {
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-left-color: var(--bg-primary);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
