@@ -1,0 +1,212 @@
+.admin-layout {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background: radial-gradient(circle at top right, #1f1a11 0%, transparent 40%),
+        radial-gradient(circle at bottom left, #141414 0%, transparent 40%);
+}
+
+.admin-sidebar {
+    width: 260px;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 1rem;
+    transition: width 0.3s ease;
+    border-radius: 0;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: none;
+    border-bottom: none;
+    border-left: none;
+}
+
+.admin-layout.collapsed .admin-sidebar {
+    width: 70px;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    padding: 0 0.5rem;
+}
+
+.sidebar-title {
+    font-size: 1.25rem;
+    color: var(--accent-gold);
+    white-space: nowrap;
+    overflow: hidden;
+    margin: 0;
+}
+
+.toggle-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: var(--transition);
+    padding: 0.25rem;
+}
+
+.toggle-btn:hover {
+    color: var(--accent-gold);
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex-grow: 1;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    border-radius: 0.5rem;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.admin-layout.collapsed .nav-item {
+    justify-content: center;
+    padding: 0.75rem 0;
+}
+
+.nav-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-item.active {
+    background: rgba(195, 157, 99, 0.1);
+    color: var(--accent-gold);
+    border-left: 3px solid var(--accent-gold);
+}
+
+.nav-icon {
+    font-size: 1.25rem;
+}
+
+.nav-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    white-space: nowrap;
+}
+
+.chevron {
+    margin-left: auto;
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+    color: var(--text-secondary);
+}
+
+.chevron.rotated {
+    transform: rotate(180deg);
+}
+
+.nav-item-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.submenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 0 0 0.5rem 0.5rem;
+}
+
+.submenu.open {
+    max-height: 800px;
+    transition: max-height 0.4s ease-in;
+}
+
+.submenu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 1rem 0.6rem 3.25rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: var(--transition);
+    cursor: pointer;
+    font-size: 0.9rem;
+    gap: 0.5rem;
+}
+
+.submenu-item .nav-text {
+    white-space: normal;
+    line-height: 1.3;
+}
+
+.submenu-item:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.submenu-chevron {
+    opacity: 0;
+    transition: opacity 0.3s;
+    flex-shrink: 0;
+}
+
+.submenu-item:hover .submenu-chevron {
+    opacity: 0.6;
+}
+
+.sidebar-footer {
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logout-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 0.75rem;
+    color: var(--error-color);
+    text-decoration: none;
+    border-radius: 0.5rem;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.logout-btn:hover {
+    background: rgba(239, 68, 68, 0.1);
+}
+
+.admin-main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.top-nav {
+    display: flex;
+    align-items: center;
+    padding: 1rem 2rem;
+    border-radius: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: none;
+    border-right: none;
+    border-left: none;
+}
+
+.content-area {
+    padding: 2rem;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+.welcome-card {
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+}
