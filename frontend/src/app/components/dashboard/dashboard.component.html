@@ -21,23 +21,47 @@
                 </div>
             </div>
 
-            <!-- Step 2: Professionals -->
-            <div class="step-card glass-panel">
-                <h3 class="step-header">2. Profissional</h3>
+            <div class="step-scroll" #step2></div>
+
+            <div class="step-card glass-panel" *ngIf="selectedService">
+                <h3 class="step-header">2. Selecione um profissional</h3>
                 <div class="grid-list professionals-list">
-                    <div class="choice-card pro-card" *ngFor="let p of professionals"
-                        [class.selected]="selectedPro?.id === p.id" (click)="selectPro(p)">
+                    <div class="choice-card pro-card" *ngFor="let p of professionals"(click)="selectPro(p)"
+                        [class.selected]="selectedPro?.id === p.id" >
                         <div class="pro-avatar">{{ p.name.charAt(0) }}</div>
                         <div class="card-info">
                             <h4>{{ p.name }}</h4>
                             <p class="service-meta">{{ p.role }}</p>
                         </div>
+                        <div class="pro-expanded" *ngIf="selectedPro === p">
+
+                            <div class="date-picker-area">
+                                <h2>Veja os horários <span class="text-gold">disponíveis</span></h2>
+                                <label class="input-label">Data</label>
+                                <input type="date"
+                                    class="input-field date-input"
+                                    [value]="selectedDate"
+                                    (change)="onDateChange($event)">
+                            </div>
+
+                            <div class="time-slots-area" *ngIf="selectedDate">
+                                <label class="input-label">Horários</label>
+
+                                <div class="time-grid">
+                                    <button *ngFor="let t of timeSlots"
+                                            class="time-btn"
+                                            [class.selected]="selectedTime === t"
+                                            (click)="selectTime(t); $event.stopPropagation()">
+                                        {{ t }}
+                                    </button>
+                                </div>
+                            </div>
                     </div>
                 </div>
             </div>
 
             <!-- Step 3: Date and Time -->
-            <div class="step-card glass-panel">
+            <!--<div class="step-card glass-panel" *ngIf="selectedPro" #step3>
                 <h3 class="step-header">3. Data e Horário</h3>
                 <div class="datetime-wrapper">
                     <div class="date-picker-area">
@@ -56,7 +80,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
 
         </div>
 
@@ -67,7 +91,7 @@
                 <div class="error-msg-box" *ngIf="errorMessage">⚠ {{ errorMessage }}</div>
             </div>
 
-            <div class="summary-actions">
+            <div class="summary-actions" #step4>
                 <div class="selected-summary" *ngIf="canSubmit()">
                     <strong>Resumo:</strong> {{ selectedService?.name }} com {{ selectedPro?.name }} em {{ selectedDate
                     | date:'dd/MM/yyyy' }} às {{ selectedTime }}.
