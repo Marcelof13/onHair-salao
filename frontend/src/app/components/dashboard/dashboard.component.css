@@ -11,10 +11,15 @@
 }
 
 .booking-grid {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
     margin-bottom: 2rem;
+}
+
+.step-scroll {
+    scroll-margin-top: 80px;
 }
 
 .step-card {
@@ -29,6 +34,18 @@
     margin-bottom: 1.5rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding-bottom: 0.5rem;
+}
+
+.date-picker-area{
+  margin-top: 16px;
+  padding: 16px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .grid-list {

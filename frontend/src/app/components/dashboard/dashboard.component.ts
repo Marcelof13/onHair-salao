@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AppointmentsService } from '../../services/appointments.service';
 
@@ -10,6 +10,9 @@ import { AppointmentsService } from '../../services/appointments.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  @ViewChild('step2') step2!: ElementRef;
+  @ViewChild('step3') step3!: ElementRef;
+  @ViewChild('step4') step4!: ElementRef;
   services: any[] = [];
   professionals: any[] = [];
   myAppointments: any[] = [];
@@ -17,8 +20,8 @@ export class DashboardComponent implements OnInit {
   // Selections
   selectedService: any = null;
   selectedPro: any = null;
-  selectedDate: string = '';
-  selectedTime: string = '';
+  selectedDate: string | null = null;
+  selectedTime: string | null = null;
 
   // UI State
   timeSlots: string[] = [];
@@ -65,9 +68,29 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  selectService(s: any) { this.selectedService = s; }
-  selectPro(p: any) { this.selectedPro = p; }
-  selectTime(t: string) { this.selectedTime = t; }
+  selectService(s: any) { this.selectedService = s; 
+    setTimeout(() => {
+    this.step2?.nativeElement.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+  }, 0);
+
+  }
+  selectPro(p: any) { this.selectedPro = p; 
+      console.log('clicou', p);
+      this.selectedPro = p;
+
+  }
+
+  selectTime(t: string) { this.selectedTime = t; 
+    setTimeout(() => {
+    this.step4?.nativeElement.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+  }, 0);
+  }
   onDateChange(event: any) { this.selectedDate = event.target.value; }
 
   canSubmit(): boolean {
